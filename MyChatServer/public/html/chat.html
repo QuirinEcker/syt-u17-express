@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    </head>
+    <body>
+        <header>
+            <h1>My Server</h1>
+        </header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/status">Status</a>
+            <a href="/contact">Contact</a>
+            <a class="active" href="/chat">Chat</a>
+        </nav>
+        <main>
+            <h2>Chatroom</h2>
+            <form action="./chat_uploud">
+                <h3>Post a message</h3>
+                <p>Name</p><input type="text" name="name" placeholder="Your name ..">
+                <input type="submit" value="Submit  ">
+                <br>
+                <p>Message</p> <textarea name="message" rows="6"></textarea>
+            </form>
+
+            <div id="chat">

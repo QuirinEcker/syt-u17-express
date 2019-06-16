@@ -1,0 +1,124 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+header {
+    background-color: rgba(0, 39, 138, 1);
+}
+header h1{
+    margin: 0;
+    padding: 2%;
+    color:#fff;
+    text-align: center;
+    font-size: 2rem;
+}
+nav {
+    background-color: rgba(0, 39, 138, 0.8);
+}
+nav a {
+    display: inline-block;
+    padding: 1.5%;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+nav a:hover, nav a.active {
+    background-color: rgba(0,39, 138, 0.7);
+}
+main {
+    padding: 0 10%;
+}
+main h2 {
+    margin: 3% 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+main form {
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    border-bottom: 0.1vw solid rgba(0, 39, 138, 0.7);
+    -webkit-border-radius: 0.1vw;
+    -moz-border-radius: 0.1vw;
+    border-radius: 0.1vw;
+}
+
+main form h3 {
+    margin: 2% 0;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+main form p {
+    display: inline-block;
+    vertical-align: top;
+    width: 15%;
+    margin: 0 0 3% 5%;
+    padding: 1% 0;
+    font-size: 1.1rem;
+}
+
+main form input main form textarea {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 1%;
+    width: 50%;
+    padding: 1%;
+    -webkit-border-radius: 0.5vw;
+    -moz-border-radius: 0.5vw;
+    border-radius: 0.5vw;
+    border: 0.12vw solid rgba(0, 39, 138, 0.3);
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+main form input:focus, main form textarea:focus {
+    border: 0.15vw solid rgba(0, 39, 138, 0.7);
+    outline: none;
+}
+
+main form input[type='submit'] {
+    color: #fff;
+    background-color: rgba(0, 39, 138, 0.8);
+    border: none;
+    width: 20%;
+    -webkit-border-radius: 0.5vw;
+    -moz-border-radius: 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: 5%;
+}
+
+main form input[type='submit']:hover {
+    background-color: rgba(0, 39, 138, 0.8);
+    cursor: pointer;
+}
+
+main #chat div {
+    background-color: rgba(0, 39, 138, 0.3);
+    padding: 1%;
+    -webkit-border-radius: 0.5vw;
+    -moz-border-radius: 0.5vw;
+    border-radius: 0.5vw;
+    margin-bottom: 3%;
+    width: 60%;
+}
+
+naub #chat div:nth-child(even) {
+    margin-left: 38%;
+}
+
+main #chat h3 {
+    font-weight: bold;
+    font-size: 1.0rem;
+    margin: 0 0 2% 0;
+}
+
+main #chat p {
+    font-size: 1.0rem;
+    margin: 0 0 2% 0;
+}
