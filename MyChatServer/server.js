@@ -1,26 +1,68 @@
-const http = require('http');
 const fs = require('fs');
-const url = require('url');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-app.post('/chat_upload', (req, res) => {
-    console.log('hllo')
-    console.log(req.body);
-    console.log(req.body.name);
-    console.log(req.body.message);
-    res.send('debugging...')
+
+app.use(express.static('public/css'));
+app.use(express.static('public/html'));
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get('/chat/:id', (req, res) => {
+    let data = fs.readFile('./public/data/chat.txt', 'utf8', function (err, data) {
+        if (err) {
+            res.status(404).send("404 File not found");
+        } else {
+            let lines = data.split('\n');
+            if (req.params.id > 0 && req.params.id <= lines.length) {
+                let line = lines[req.params.id - 1];
+                let elements = line.split(';');
+
+                if(elements[1] !== undefined) {
+                    let obj = {name: elements[0], age: elements[1]};
+                    res.send(JSON.stringify(obj));
+                } else {
+                    res.send('error');
+                }
+            }  else {
+                res.send('error');
+            }
+        }
+    })
 });
+
+app.post('/chat', (req, res) => {
+    console.log(req.query.name);
+    console.log(req.query.message);
+    if (req.body.name && req.body.message) {
+            let line = `${req.body.name};${req.body.message}\n`;
+
+            fs.appendFile('./public/data/chat.txt', line, 'utf8', function(err) {
+                if (err) throw err
+                console.log('@file chat.txt: new data added');
+
+                fs.readFile(`./public/html/confirm.html`, {encoding: 'utf-8'}, (err, data) => {
+                    if (err) {
+                        res.status(404).send('404 File not Found')
+                    }
+                    res.send(data)
+                });
+            });
+        } else {
+            fs.readFile(`./public/html/error.html`, {encoding: 'utf-8'}, (err, data) => {
+                if (err) {
+                    res.status(404).send('404 File not Found')
+                }
+                res.send(data)
+            });
+        }
+});
+
 
 app.get('/chat', (req, res) => {
     console.log("hllo")
     res.send("hllo")
 });
-
-app.use(express.static('public/css'));
-app.use(express.static('public/html'));
-app.use(bodyParser.urlencoded({extended: true}));
 
 app.listen(3000, () => {
     console.log('Access via localhost or IP 192.168.1.205');
