@@ -3,24 +3,28 @@ const fs = require('fs');
 const url = require('url');
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
 
+app.post('/chat_upload', (req, res) => {
+    console.log('hllo')
+    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.message);
+    res.send('debugging...')
+});
 
-app.listen(3000, () => {
-    console.log('Access via localhost or IP 192.168.1.205');
-    console.log('Listening to port: ' + 3000);
+app.get('/chat', (req, res) => {
+    console.log("hllo")
+    res.send("hllo")
 });
 
 app.use(express.static('public/css'));
 app.use(express.static('public/html'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/chat_upload', (req, res) => {
-    console.log(req.body);
-    console.log(req.body.name);
-    console.log(req.body.message);
-    res.send('debugging...')
+app.listen(3000, () => {
+    console.log('Access via localhost or IP 192.168.1.205');
+    console.log('Listening to port: ' + 3000);
 });
 
 // http.createServer(function (req, res) {
