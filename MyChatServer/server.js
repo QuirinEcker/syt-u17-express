@@ -60,8 +60,18 @@ app.post('/chat', (req, res) => {
 
 
 app.get('/chat', (req, res) => {
-    console.log("hllo")
-    res.send("hllo")
+    let chat_part1 = fs.readFileSync('./public/html/chat.html', 'utf8');
+    let chat_part2 = '';
+    let data = fs.readFileSync('./public/data/chat.txt', 'utf8');
+    let chat_part3 = fs.readFileSync('./public/html/chat2.html', 'utf8')
+
+    let lines = data.split('\n');
+    lines.forEach((line) => {
+        let elements = line.split(';');
+        if(elements[1] !== undefined)
+            chat_part2 += `<div><h3>${elements[0]}</h3><p>${elements[1]}</p></div>`
+    })
+    res.send(`${chat_part1}${chat_part2}${chat_part3}`)
 });
 
 app.listen(3000, () => {
